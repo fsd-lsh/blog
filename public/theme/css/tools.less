@@ -1,0 +1,85 @@
+@media (min-width: 576px) { .modal-dialog { max-width:900px; } }
+
+#tools-panel {
+
+    .item {
+
+        margin:10px 0 0 0;
+
+        .tools-btn {
+
+            position: relative;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 130px;
+            transition: all linear .2s;
+
+            &:hover {
+                box-shadow: 2px 2px 5px #888888;
+                transition: all linear .2s;
+            }
+
+            > .logo, > .title {
+                display: inline-block;
+                height: 20px;
+                line-height: 20px;
+                font-weight: 700;
+            }
+
+            > .logo {
+                border-radius: 2px;
+                background: #009a62;
+                color: #fff;
+                text-align: center;
+                width :45px;
+                height: 45px;
+                line-height: 45px;
+                font-size: 25px;
+            }
+
+            > .title {
+
+                padding: 0 0 0 10px;
+                color: #333;
+
+                > p {
+                    margin: 0;
+                }
+
+                > p:nth-child(2) {
+                    margin: 4px 0 0 0;
+                    font-weight: normal;
+                    font-size: 12px;
+                }
+
+                > p:nth-child(3) {
+                    width: 150px;
+                    display: block;
+                    position: absolute;
+                    left: 16px;
+                    bottom: 16px;
+                    font-size: 12px;
+                }
+            }
+
+            > .dialog {
+
+                padding: 0 10px;
+                transition: all linear .2s;
+                display: inline-block;
+                border-bottom: 2px solid transparent;
+                right: 6px;
+                bottom: 10px;
+                font-size: 14px;
+                position: absolute;
+
+                &:hover {
+                    transition: all linear .2s;
+                    border-bottom: 2px solid #009a61;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

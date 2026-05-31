@@ -1,0 +1,125 @@
+---
+import { siteConfig, siteMeta } from '../site.config';
+---
+
+<div class="col-xl-3 blog-sidebar">
+  <div class="blog-sidebar-title">
+    <a href="/">Force's Blog</a>
+    <a href="/" style="font-size:14px;font-weight:600;color:#ff4f4f;">{siteConfig.title}</a>
+  </div>
+  <div class="blog-sidebar-logo">
+    <img src={siteConfig.avatar} alt="avatar" />
+  </div>
+  <div class="blog-sidebar-count blog-sidebar-padding">
+    <div class="blog-sidebar-count-left">
+      <p class="blog-sidebar-count-p">{siteMeta.postCount}</p>
+      <span class="blog-sidebar-count-span">文章</span>
+    </div>
+    <div class="blog-sidebar-count-right">
+      <p class="blog-sidebar-count-p">{siteMeta.categoryCount}</p>
+      <span class="blog-sidebar-count-span">分类</span>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div class="blog-sidebar-icon blog-sidebar-padding">
+    <ul>
+      {
+        siteConfig.social.github && (
+          <li>
+            <a
+              href={siteConfig.social.github}
+              class="icon-github"
+              target="_blank"
+              rel="noopener"
+              title="Github"
+            >
+              <i class="fa fa-github"></i>
+            </a>
+          </li>
+        )
+      }
+      {
+        siteConfig.social.weibo && (
+          <li>
+            <a
+              href={siteConfig.social.weibo}
+              class="icon-weibo"
+              target="_blank"
+              rel="noopener"
+              title="新浪微博"
+            >
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+        )
+      }
+      {
+        siteConfig.social.email && (
+          <li>
+            <a
+              href={`mailto:${siteConfig.social.email}`}
+              class="icon-email"
+              title="E-Mail"
+            >
+              <i class="fa fa-envelope"></i>
+            </a>
+          </li>
+        )
+      }
+      <li>
+        <a href="/rss.xml" class="icon-rss" target="_blank" title="RSS">
+          <i class="fa fa-rss"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="blog-sidebar-tags">
+    <h4 class="blog-sidebar-h4"><i class="fa fa-tag"></i>&nbsp;标签云</h4>
+    <ul class="blog-sidebar-tags-ul blog-sidebar-padding">
+      {
+        siteMeta.tags.map((tag) => (
+          <li>
+            <a
+              href={`/tag/${encodeURIComponent(tag.slug)}.html`}
+              class="tag-could"
+              title={tag.name}
+            >
+              {tag.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="blog-sidebar-categories">
+    <h4 class="blog-sidebar-h4"><i class="fa fa-folder-open"></i>&nbsp;文章分类</h4>
+    <ul class="list-group blog-sidebar-padding">
+      {
+        siteMeta.categories.map((cat) => (
+          <li class="list-group-item justify-content-between">
+            <a href={`/category/${cat.slug}.html`}>{cat.name}</a>
+            <span class="badge badge-default badge-pill">{cat.count}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <div class="blog-sidebar-tags">
+    <h4 class="blog-sidebar-h4"><i class="fa fa-area-chart"></i>&nbsp;网站信息</h4>
+    <ul class="list-group blog-sidebar-padding" style="text-align:center">
+      <li class="list-group-item justify-content-between">
+        <a href="/">
+          Copyright © {new Date().getFullYear()}
+          {siteConfig.title}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="retop">
+    <i class="fa fa-angle-up"></i>
+  </div>
+</div>

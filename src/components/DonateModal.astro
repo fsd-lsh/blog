@@ -1,0 +1,35 @@
+---
+import { siteConfig } from '../site.config';
+---
+
+<div class="modal fade" id="post-donate-content" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">打赏本文</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row post-donate-content">
+          <div class="col-md-4">
+            <p>支付宝</p>
+            <img class="post-donate-content-img" src={siteConfig.donate.alipay} alt="支付宝" />
+          </div>
+          <div class="col-md-4">
+            <p>微信</p>
+            <img class="post-donate-content-img" src={siteConfig.donate.wechat} alt="微信" />
+          </div>
+          <div class="col-md-4">
+            <p>财付通</p>
+            <img class="post-donate-content-img" src={siteConfig.donate.qq} alt="QQ" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>

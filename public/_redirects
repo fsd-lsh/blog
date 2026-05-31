@@ -1,0 +1,8 @@
+# Cloudflare Pages
+# Build command: npm run build
+# Build output directory: dist
+# Root directory: astro
+
+# Optional redirects for legacy Typecho paths (adjust as needed)
+/feed/ /rss.xml 301
+/feed /rss.xml 301

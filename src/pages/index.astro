@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pagination from '../components/Pagination.astro';
+import { siteConfig } from '../site.config';
+import { getCollection } from 'astro:content';
+
+const pageNum = Number(Astro.url.searchParams.get('page') || '1');
+const allPosts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const totalPages = Math.max(1, Math.ceil(allPosts.length / siteConfig.postsPerPage));
+const currentPage = Math.min(Math.max(1, pageNum), totalPages);
+const posts = allPosts.slice(
+  (currentPage - 1) * siteConfig.postsPerPage,
+  currentPage * siteConfig.postsPerPage,
+);
+
+function formatDate(d: Date) {
+  return d.toISOString().slice(0, 10);
+}
+---
+
+<BaseLayout title={siteConfig.title}>
+  <div class="blog-main-post">
+    <div class="index-post-br"></div>
+    {
+      posts.map((post) => (
+        <article class="blog-post-block">
+          <header />
+          <div class="blog-post-block-padding">
+            <a href={`/archives/${post.data.typechoCid}.html`}>{post.data.title}</a>
+            <section>
+              <p>{post.data.description}</p>
+            </section>
+            <footer>
+              <time datetime={post.data.date.toISOString()}>
+                <i class="fa fa-clock-o" />
+                {formatDate(post.data.date)}
+              </time>
+              {post.data.categories.length > 0 && (
+                <span>
+                  <i class="fa fa-folder-o" />
+                  {post.data.categories.map((cat, i) => (
+                    <>
+                      {i > 0 && ', '}
+                      {cat}
+                    </>
+                  ))}
+                </span>
+              )}
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+    <Pagination
+      currentPage={currentPage}
+      totalPages={totalPages}
+      basePath="/"
+    />
+  </div>
+</BaseLayout>

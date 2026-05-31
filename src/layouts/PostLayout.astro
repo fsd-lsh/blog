@@ -1,0 +1,82 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import DonateModal from '../components/DonateModal.astro';
+import PostQrCode from '../components/PostQrCode.astro';
+
+interface Props {
+  title: string;
+  date: Date;
+  categories: string[];
+  tags: string[];
+  permalink: string;
+}
+
+const { title, date, categories, tags, permalink } = Astro.props;
+
+function formatDate(d: Date) {
+  return d.toISOString().slice(0, 10);
+}
+---
+
+<BaseLayout title={title}>
+  <header class="blog-post-page-title">
+    <h4>{title}</h4>
+    <time datetime={date.toISOString()}>
+      <i class="fa fa-clock-o"></i>
+      {formatDate(date)}
+    </time>
+    {
+      categories.length > 0 && (
+        <span>
+          <i class="fa fa-folder-o"></i>
+          {categories.join(', ')}
+        </span>
+      )
+    }
+  </header>
+  <div class="blog-main-post blog-post-page-box">
+    <article class="blog-post-block blog-post-page-content">
+      <section>
+        <slot />
+      </section>
+      {
+        tags.length > 0 && (
+          <footer class="blog-post-page-tags">
+            {tags.map((tag) => (
+              <span class="badge badge-secondary">{tag}</span>
+            ))}
+          </footer>
+        )
+      }
+    </article>
+
+    <slot name="after-content" />
+
+    <article class="blog-post-block blog-post-page-content">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 post-page-more-btn">
+          <span
+            class="btn btn-danger btn-block"
+            data-toggle="modal"
+            data-target="#post-donate-content"
+          >
+            打赏本文
+          </span>
+        </div>
+        <div class="col-md-6 col-sm-6 post-page-more-btn">
+          <span
+            class="btn btn-success btn-block"
+            data-toggle="modal"
+            data-target="#post-qrcode-content"
+            id="post-qrcode-btn"
+          >
+            二维码
+          </span>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <DonateModal />
+  <PostQrCode permalink={permalink} />
+</BaseLayout>

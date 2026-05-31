@@ -1,0 +1,136 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import Navigation from '../components/Navigation.astro';
+import { siteConfig } from '../site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title
+  ? `${title} - ${siteConfig.title}`
+  : `${siteConfig.title} - Force's Blog`;
+---
+
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="sogou_site_verification" content="XplfCSKPim" />
+    <meta name="360-site-verification" content="1dbe25c9923e770583b597014a2b6977" />
+    <meta
+      name="google-site-verification"
+      content="Ceo6VVOUQmsSAzMertvHBI9JoV5l7mLSEBrBapuCrwE"
+    />
+    <meta name="bytedance-verification-code" content="rpD+PS8NDitMx9kNoNDs" />
+    <title>{pageTitle}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/theme/css/tl.css?v=1.0.3" />
+    <link rel="stylesheet" href="/theme/css/atom-one-dark.css" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row blog-box-shadow">
+        <div class="col-xl-9 col-lg-12 blog-main" id="pjax-box">
+          <header class="blog-header">
+            <a href="/" class="blog-header-mobile-title">
+              <img
+                src={siteConfig.avatar}
+                alt="head-img"
+                style="width:30px;border-radius:100%;margin:0;"
+              />
+              <span>Force's Blog</span>
+            </a>
+            <a href="javascript:;" class="blog-header-navbar-btn" id="nav-toggle"
+              ><i class="fa fa-bars"></i></a
+            >
+            <nav class="blog-header-navbar blog-header-fixed">
+              <ul class="blog-navbar-links">
+                <Navigation />
+                <div class="blog-navbar-right">
+                  <form id="search-form" action="/search.html" method="get" role="search">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="q"
+                        class="blog-header-search"
+                        placeholder="search..."
+                      />
+                      <button type="submit" class="blog-header-search-btn"
+                        ><i class="fa fa-search"></i></button
+                      >
+                    </div>
+                  </form>
+                </div>
+              </ul>
+            </nav>
+          </header>
+          <slot />
+        </div>
+        <Sidebar />
+      </div>
+    </div>
+
+    <script is:inline src="/theme/js/jquery-2.2.4.min.js"></script>
+    <script is:inline src="/theme/js/tether.min.js"></script>
+    <script is:inline src="/theme/js/bootstrap.min.js"></script>
+    <script is:inline src="/theme/js/tl.js"></script>
+    <script is:inline>
+      // 导航菜单切换
+      document.getElementById('nav-toggle')?.addEventListener('click', function () {
+        document.querySelector('.blog-header-navbar')?.classList.toggle('open');
+      });
+      // 返回顶部
+      var retopEl = document.querySelector('.retop');
+      if (retopEl) {
+        retopEl.style.display = 'none';
+        retopEl.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        window.addEventListener('scroll', function () {
+          retopEl.style.display = window.scrollY > 450 ? 'block' : 'none';
+        });
+      }
+      // 侧边栏标题滚动阴影
+      window.addEventListener('scroll', function () {
+        var titleEl = document.querySelector('.blog-sidebar-title');
+        if (titleEl) {
+          titleEl.classList.toggle('blog-sidebar-title-shadow', window.scrollY > 10);
+        }
+      });
+      // 标签云随机颜色
+      var tagCloud = document.querySelectorAll('.tag-could');
+      tagCloud.forEach(function (el) {
+        el.classList.add('tag-could' + Math.floor(Math.random() * 9));
+      });
+      // 文章页：表单控件样式
+      document.querySelectorAll('.blog-post-page-content input').forEach(function (el) {
+        el.classList.add('form-control');
+      });
+      // 文章页：外部链接新窗口打开
+      document.querySelectorAll('.blog-post-page-content a:not(.img-a)').forEach(function (el) {
+        el.setAttribute('target', '_blank');
+      });
+      // 设置主内容区最小高度
+      var blogMain = document.querySelector('.blog-main');
+      if (blogMain) {
+        blogMain.style.minHeight = window.innerHeight + 'px';
+      }
+      console.log(
+        "%c Force's Blog %c 专注于全栈开发 %c",
+        'background:#35495e;padding:1px;border-radius:3px 0 0 3px;color:#fff',
+        'background:#E4393C;padding:1px;border-radius:0 3px 3px 0;color:#fff',
+        'background:transparent',
+      );
+    </script>
+  </body>
+</html>

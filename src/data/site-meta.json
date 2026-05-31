@@ -1,0 +1,261 @@
+{
+  "title": "技术栈",
+  "subtitle": "专注于全栈开发",
+  "siteUrl": "https://www.easybhu.cn",
+  "postCount": 134,
+  "categoryCount": 14,
+  "categories": [
+    {
+      "name": "Node.js",
+      "slug": "Node-js",
+      "count": 3
+    },
+    {
+      "name": "News",
+      "slug": "News",
+      "count": 1
+    },
+    {
+      "name": "JavaScript",
+      "slug": "js",
+      "count": 55
+    },
+    {
+      "name": "PHP",
+      "slug": "php",
+      "count": 32
+    },
+    {
+      "name": "树莓派",
+      "slug": "Raspberry-Pi",
+      "count": 10
+    },
+    {
+      "name": "DevOps",
+      "slug": "DevOps",
+      "count": 11
+    },
+    {
+      "name": "Database",
+      "slug": "Database",
+      "count": 14
+    },
+    {
+      "name": "System",
+      "slug": "os",
+      "count": 7
+    },
+    {
+      "name": "HTML",
+      "slug": "html",
+      "count": 7
+    },
+    {
+      "name": "CSS",
+      "slug": "CSS",
+      "count": 7
+    },
+    {
+      "name": "Golang",
+      "slug": "Golang",
+      "count": 3
+    },
+    {
+      "name": "Nginx",
+      "slug": "Nginx",
+      "count": 4
+    },
+    {
+      "name": "Python",
+      "slug": "py",
+      "count": 2
+    },
+    {
+      "name": "Other",
+      "slug": "Other",
+      "count": 3
+    }
+  ],
+  "tags": [
+    {
+      "name": "vue",
+      "slug": "vue",
+      "count": 26
+    },
+    {
+      "name": "PHP",
+      "slug": "php",
+      "count": 15
+    },
+    {
+      "name": "Mysql",
+      "slug": "Mysql",
+      "count": 12
+    },
+    {
+      "name": "树莓派",
+      "slug": "树莓派",
+      "count": 8
+    },
+    {
+      "name": "docker",
+      "slug": "docker",
+      "count": 7
+    },
+    {
+      "name": "Javascript",
+      "slug": "js",
+      "count": 6
+    },
+    {
+      "name": "js",
+      "slug": "js",
+      "count": 6
+    },
+    {
+      "name": "webpack",
+      "slug": "webpack",
+      "count": 5
+    },
+    {
+      "name": "css",
+      "slug": "css",
+      "count": 4
+    },
+    {
+      "name": "node.js",
+      "slug": "node-js",
+      "count": 4
+    },
+    {
+      "name": "centos",
+      "slug": "centos",
+      "count": 3
+    },
+    {
+      "name": "elementUI",
+      "slug": "elementUI",
+      "count": 3
+    },
+    {
+      "name": "linux",
+      "slug": "linux",
+      "count": 3
+    },
+    {
+      "name": "gokins",
+      "slug": "gokins",
+      "count": 3
+    },
+    {
+      "name": "macos",
+      "slug": "macos",
+      "count": 3
+    },
+    {
+      "name": "laravel",
+      "slug": "laravel",
+      "count": 3
+    },
+    {
+      "name": "微信小程序",
+      "slug": "微信小程序",
+      "count": 3
+    },
+    {
+      "name": "python",
+      "slug": "python",
+      "count": 2
+    },
+    {
+      "name": "less",
+      "slug": "less",
+      "count": 2
+    },
+    {
+      "name": "vuex",
+      "slug": "vuex",
+      "count": 2
+    },
+    {
+      "name": "Jenkins",
+      "slug": "Jenkins",
+      "count": 2
+    },
+    {
+      "name": "uniapp",
+      "slug": "uniapp",
+      "count": 2
+    },
+    {
+      "name": "ELK",
+      "slug": "ELK",
+      "count": 2
+    },
+    {
+      "name": "html",
+      "slug": "html",
+      "count": 1
+    },
+    {
+      "name": "puppeteer",
+      "slug": "puppeteer",
+      "count": 1
+    },
+    {
+      "name": "一键安装脚本",
+      "slug": "一键安装脚本",
+      "count": 1
+    },
+    {
+      "name": "宝塔面板",
+      "slug": "宝塔面板",
+      "count": 1
+    },
+    {
+      "name": "root",
+      "slug": "root",
+      "count": 1
+    },
+    {
+      "name": "github",
+      "slug": "github",
+      "count": 1
+    },
+    {
+      "name": "mac",
+      "slug": "mac",
+      "count": 1
+    }
+  ],
+  "pages": [
+    {
+      "title": "工具箱",
+      "slug": "cubes",
+      "template": "tools",
+      "cid": 159
+    },
+    {
+      "title": "友情链接",
+      "slug": "link",
+      "template": "links",
+      "cid": 3
+    },
+    {
+      "title": "关于",
+      "slug": "info-circle",
+      "template": "default",
+      "cid": 2
+    }
+  ],
+  "theme": {
+    "wechatUrl": "/theme/images/wechatpay.png",
+    "alipayUrl": "/theme/images/alipay.jpeg",
+    "qqUrl": "/theme/images/qqpay.png",
+    "socialgithub": "https://github.com/fsd-lsh",
+    "socialweibo": "https://weibo.com/u/2014301395",
+    "socialrss": "/rss.xml",
+    "socialemail": "lisihan@outlook.com",
+    "socialicp": ""
+  }
+}

@@ -1,0 +1,14 @@
+.idea
+.DS_Store
+*.cache
+statistic_result.re
+local
+query_result.json
+astro/.env.local
+astro/node_modules
+astro/dist
+astro/.astro
+astro/migration-report.json
+node_modules
+dist
+.env*

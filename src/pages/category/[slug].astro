@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteMeta } from '../../site.config';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const paths = siteMeta.categories.map((cat) => {
+    const slug = cat.slug;
+    const filtered = posts
+      .filter((p) => p.data.categories.some((c) => c === cat.name))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return {
+      params: { slug },
+      props: { category: cat, posts: filtered },
+    };
+  });
+  return paths;
+}
+
+const { category, posts } = Astro.props;
+
+function formatDate(d: Date) {
+  return d.toISOString().slice(0, 10);
+}
+---
+
+<BaseLayout title={`分类 ${category.name} 下的文章`}>
+  <header class="blog-post-page-title blog-search-page-title">
+    <h4>
+      分类 <span class="archive-page-keyword">{category.name}</span> 下的文章
+    </h4>
+  </header>
+  <div class="blog-main-post blog-post-page-box">
+    {
+      posts.map((post) => (
+        <article class="blog-post-block">
+          <div class="blog-post-block-padding">
+            <a href={`/archives/${post.data.typechoCid}.html`}>{post.data.title}</a>
+            <section>
+              <p>{post.data.description}</p>
+            </section>
+            <footer>
+              <time datetime={post.data.date.toISOString()}>
+                <i class="fa fa-clock-o" />
+                {formatDate(post.data.date)}
+              </time>
+            </footer>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

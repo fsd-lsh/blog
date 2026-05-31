@@ -1,0 +1,47 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  isLinks?: boolean;
+}
+
+const { title, isLinks = false } = Astro.props;
+---
+
+<BaseLayout title={title}>
+  <header class="blog-post-page-title">
+    <h4>{title}</h4>
+  </header>
+  <div class="blog-main-post blog-post-page-box">
+    <article
+      class:list={[
+        'blog-post-block',
+        'blog-post-page-content',
+        isLinks && 'links-page',
+      ]}
+    >
+      <section class:list={[isLinks && 'links-block']}>
+        <slot />
+      </section>
+    </article>
+  </div>
+  {
+    isLinks && (
+      <script is:inline>
+        document.addEventListener('DOMContentLoaded', function () {
+          var block = document.querySelector('.links-block');
+          if (!block) return;
+          block.querySelectorAll('a').forEach(function (a) {
+            var wrap = document.createElement('div');
+            wrap.className = 'col-md-3 links-block-div';
+            a.classList.add('links-block-btn', 'btn', 'btn-outline-info', 'btn-block');
+            a.parentNode.insertBefore(wrap, a);
+            wrap.appendChild(a);
+          });
+          block.classList.add('row');
+        });
+      </script>
+    )
+  }
+</BaseLayout>

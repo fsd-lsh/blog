@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { cid: String(post.data.typechoCid) },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const allPosts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+const idx = allPosts.findIndex((p) => p.data.typechoCid === post.data.typechoCid);
+const prev = idx > 0 ? allPosts[idx - 1] : null;
+const next = idx < allPosts.length - 1 ? allPosts[idx + 1] : null;
+const permalink = `/archives/${post.data.typechoCid}.html`;
+---
+
+<PostLayout
+  title={post.data.title}
+  date={post.data.date}
+  categories={post.data.categories}
+  tags={post.data.tags}
+  permalink={permalink}
+>
+  <Content />
+
+  <article class="blog-post-page-readmore" slot="after-content">
+    {
+      prev && (
+        <a class="blog-post-page-readmore-prev" href={`/archives/${prev.data.typechoCid}.html`}>
+          <span>上一篇</span>
+          {prev.data.title}
+        </a>
+      )
+    }
+    {
+      next && (
+        <a class="blog-post-page-readmore-next" href={`/archives/${next.data.typechoCid}.html`}>
+          <span>下一篇</span>
+          {next.data.title}
+        </a>
+      )
+    }
+    <div style="clear: both;"></div>
+  </article>
+</PostLayout>

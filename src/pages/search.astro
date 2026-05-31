@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="搜索">
+  <header class="blog-post-page-title">
+    <h4>站内搜索</h4>
+  </header>
+  <div class="blog-main-post blog-post-page-box">
+    <article class="blog-post-block blog-post-page-content">
+      <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+      <div id="search"></div>
+    </article>
+  </div>
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof PagefindUI !== 'undefined') {
+        new PagefindUI({ element: '#search', showSubResults: true });
+      }
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageLayout from '../layouts/PageLayout.astro';
+import ToolsPanel from '../components/ToolsPanel.vue';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((page) => ({
+    params: { slug: page.data.pageSlug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const { Content } = await page.render();
+const isLinks = page.data.template === 'links';
+const isTools = page.data.template === 'tools';
+---
+
+{
+  isTools ? (
+    <BaseLayout title={page.data.title}>
+      <header class="blog-post-page-title">
+        <h4>{page.data.title}</h4>
+      </header>
+      <div class="blog-main-post blog-post-page-box">
+        <article class="blog-post-block blog-post-page-content">
+          <ToolsPanel client:load />
+        </article>
+      </div>
+    </BaseLayout>
+  ) : (
+    <PageLayout title={page.data.title} isLinks={isLinks}>
+      <Content />
+    </PageLayout>
+  )
+}

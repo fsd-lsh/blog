@@ -1,0 +1,27 @@
+---
+import { siteMeta } from '../site.config';
+
+/** 不在导航中展示的独立页面 */
+const HIDDEN_NAV_SLUGS = new Set(['sub-site', 'thumbs-down']);
+
+const navPages = siteMeta.pages.filter((p) => !HIDDEN_NAV_SLUGS.has(p.slug));
+---
+
+<li class="blog-nav-item">
+  <a href="/" class="transition"><i class="fa fa-home"></i>首页</a>
+</li>
+<li class="blog-nav-item">
+  <a href="https://github.com/fsd-lsh" target="_blank" rel="noopener" class="transition"
+    ><i class="fa fa-github"></i>Github</a
+  >
+</li>
+{
+  navPages.map((page) => (
+    <li class="blog-nav-item">
+      <a href={`/${page.slug}.html`} class="transition">
+        <i class={`fa fa-${page.slug}`}></i>
+        {page.title}
+      </a>
+    </li>
+  ))
+}

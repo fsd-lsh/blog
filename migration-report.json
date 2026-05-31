@@ -1,0 +1,19 @@
+{
+  "exportedAt": "2026-05-31T10:39:05.625Z",
+  "posts": {
+    "success": 134,
+    "failed": 0
+  },
+  "pages": {
+    "success": 3,
+    "skipped": 2,
+    "failed": 0
+  },
+  "missingImages": [
+    {
+      "cid": 59,
+      "src": "carImg"
+    }
+  ],
+  "errors": []
+}
