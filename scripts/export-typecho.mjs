@@ -255,7 +255,7 @@ async function main() {
   const options = Object.fromEntries(optRows.map((r) => [r.name, r.value]));
   const theme = phpUnserialize(options['theme:tl'] || '');
   const siteUrl = (options.siteUrl || cfg.siteUrl).replace(/\/$/, '');
-  const siteTitle = options.title || "Force's Blog";
+  const siteTitle = options.title || "Sihan's Blog";
 
   console.log('Copying theme assets...');
   await copyThemeAssets();

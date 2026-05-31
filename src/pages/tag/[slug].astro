@@ -42,9 +42,7 @@ function formatDate(d: Date) {
         <article class="blog-post-block">
           <div class="blog-post-block-padding">
             <a href={`/archives/${post.data.typechoCid}.html`}>{post.data.title}</a>
-            <section>
-              <p>{post.data.description}</p>
-            </section>
+            <section set:html={post.data.description || ''} />
             <footer>
               <time datetime={post.data.date.toISOString()}>
                 <i class="fa fa-clock-o" />

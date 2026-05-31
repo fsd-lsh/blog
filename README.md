@@ -1,4 +1,4 @@
-# Force's Blog (Astro)
+# Sihan's Blog (Astro)
 
 Typecho 静态化迁移版本。从 MySQL 导出 Markdown，构建为纯静态站点。
 

@@ -11,7 +11,7 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = title
   ? `${title} - ${siteConfig.title}`
-  : `${siteConfig.title} - Force's Blog`;
+  : `${siteConfig.title} - Sihan's Blog`;
 ---
 
 <!doctype html>
@@ -48,7 +48,7 @@ const pageTitle = title
                 alt="head-img"
                 style="width:30px;border-radius:100%;margin:0;"
               />
-              <span>Force's Blog</span>
+              <span>Sihan's Blog</span>
             </a>
             <a href="javascript:;" class="blog-header-navbar-btn" id="nav-toggle"
               ><i class="fa fa-bars"></i></a
@@ -126,7 +126,7 @@ const pageTitle = title
         blogMain.style.minHeight = window.innerHeight + 'px';
       }
       console.log(
-        "%c Force's Blog %c 专注于全栈开发 %c",
+        "%c Sihan's Blog %c 专注于全栈开发 %c",
         'background:#35495e;padding:1px;border-radius:3px 0 0 3px;color:#fff',
         'background:#E4393C;padding:1px;border-radius:0 3px 3px 0;color:#fff',
         'background:transparent',

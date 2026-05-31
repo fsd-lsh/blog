@@ -9,7 +9,7 @@ const { currentPage, totalPages, basePath } = Astro.props;
 
 function pageHref(p: number) {
   if (p <= 1) return basePath;
-  return `${basePath}?page=${p}`;
+  return `${basePath}page/${p}.html`;
 }
 ---
 

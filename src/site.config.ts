@@ -23,7 +23,7 @@ export interface SiteConfig {
 const theme = siteMeta.theme as Record<string, string>;
 
 export const siteConfig: SiteConfig = {
-  title: siteMeta.title || "Force's Blog",
+  title: siteMeta.title || "Sihan's Blog",
   subtitle: siteMeta.subtitle || '',
   siteUrl: siteMeta.siteUrl || 'https://www.easybhu.cn',
   postsPerPage: 10,
