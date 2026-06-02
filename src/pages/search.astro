@@ -16,7 +16,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <script is:inline>
     window.addEventListener('DOMContentLoaded', function () {
       if (typeof PagefindUI !== 'undefined') {
-        new PagefindUI({ element: '#search', showSubResults: true });
+        var opts = { element: '#search', showSubResults: true };
+        // Read search query from URL parameter at runtime
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q');
+        if (q) {
+          opts.initialQuery = q;
+        }
+        new PagefindUI(opts);
       }
     });
   </script>
